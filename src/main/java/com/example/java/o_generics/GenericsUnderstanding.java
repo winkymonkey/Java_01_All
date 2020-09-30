@@ -18,6 +18,7 @@ class PairBox<K,V> {
 	}
 }
 
+
 /*********************************************************************/		//Single Type Parameter
 class Test01 {
 	Box<Integer> box1;				//it's Type Invocation
@@ -26,6 +27,7 @@ class Test01 {
 		box1 = new Box<>();			//it's Instantiation (Type Inference)
 	}
 }
+
 
 /*********************************************************************/		//Multiple Type Parameter
 class Test02 {
@@ -36,7 +38,9 @@ class Test02 {
 	}
 }
 
+
 /*********************************************************************/		//Raw-Type
+@SuppressWarnings({"rawtypes", "unchecked"})
 class Test03 {
 	Box<Integer> parameterized;	//Parameterized Type
 	Box raw;					//Raw Type
@@ -46,10 +50,12 @@ class Test03 {
 	}
 }
 
+
 /*********************************************************************/		//NOT Raw-Type
 class Test04 {
 	SimpleBox box4;				//Not A Raw Type
 }
+
 
 /*********************************************************************/		//Generic Method
 class Test05 {
@@ -64,6 +70,7 @@ class Test05 {
 		Test05.fly("X");			//for Type Parameter <U>, the Type Argument is 'String' (Type Inference)
 	}
 }
+
 
 /*********************************************************************/		//Generic Type & Inheritance
 class Test06 {
@@ -93,6 +100,7 @@ class Test08 {
 	}
 }
 
+
 /*********************************************************************/		//Generic Constructor
 class Test09 {				//Generic Constructor of a Non-Generic Class
 	<T> Test09(T t) {
@@ -106,6 +114,7 @@ class Test10<X> {			//Generic Constructor of a Generic Class
 	}
 }
 
+
 /*********************************************************************/		//Type Inference & Generic Constructor
 class Test11<X> {
 	{
@@ -117,19 +126,6 @@ class Test11<X> {
 	
 	void process(List<String> stringList) {/***/}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
