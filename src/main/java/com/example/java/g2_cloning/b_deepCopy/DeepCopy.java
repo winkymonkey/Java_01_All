@@ -1,4 +1,4 @@
-package com.example.java.g_serializable_clonable.e_cloning_deepCopy;
+package com.example.java.g2_cloning.b_deepCopy;
 
 
 class Course implements Cloneable {

@@ -1,4 +1,4 @@
-package com.example.java.g_serializable_clonable.d_cloning_shallowCopy;
+package com.example.java.g2_cloning.a_shallowCopy;
 
 
 class Course {

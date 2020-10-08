@@ -1,4 +1,4 @@
-package com.example.java.g_serializable_clonable.a_serialization_basic;
+package com.example.java.g1_serializable.c_validateObject;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

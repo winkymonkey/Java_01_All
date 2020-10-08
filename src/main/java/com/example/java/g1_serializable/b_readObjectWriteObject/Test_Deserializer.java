@@ -1,4 +1,4 @@
-package com.example.java.g_serializable_clonable.b_seralization_readObjectWriteObject;
+package com.example.java.g1_serializable.b_readObjectWriteObject;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
