@@ -1,4 +1,4 @@
-package com.example.java.g_serializable_clonable.a_serialization_basic;
+package com.example.java.g_serializable_clonable.c_seralization_validateObject;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,8 +14,8 @@ public class Test_Deserializer {
 		Employee emp2 = (Employee)in.readObject();
 		in.close();
 		
-		System.out.println(emp2.age);				//20
-		System.out.println(emp2.salary);			//0
-		System.out.println(Employee.experience);	//0
+		System.out.println(emp2.age);				//already caught an exception, hence not deserialized
+		System.out.println(emp2.salary);			//already caught an exception, hence not deserialized
+		System.out.println(Employee.experience);	//already caught an exception, hence not deserialized
 	}
 }

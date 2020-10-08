@@ -1,4 +1,4 @@
-package com.example.java.g_serializable_clonable.b_seralization_specialMethods;
+package com.example.java.g_serializable_clonable.b_seralization_readObjectWriteObject;
 
 import java.io.*;
 
@@ -16,13 +16,13 @@ public class Employee implements Serializable {
 		Employee.experience = experience;
 	}
 	
+	
 	private void writeObject(ObjectOutputStream oos) throws IOException {
 		oos.defaultWriteObject();
-		oos.writeInt(age*10);
+		oos.writeInt(age + 2);
 	}
-	
 	private void readObject(ObjectInputStream ois) throws IOException,ClassNotFoundException {
 		ois.defaultReadObject();
-		age = ois.readInt();
+		age = ois.readInt() - 6;
 	}
 }

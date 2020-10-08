@@ -1,4 +1,4 @@
-package com.example.java.g_serializable_clonable.b_seralization_specialMethods;
+package com.example.java.g_serializable_clonable.b_seralization_readObjectWriteObject;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,8 +14,8 @@ public class Test_Deserializer {
 		Employee emp2 = (Employee)in.readObject();
 		in.close();
 		
-		System.out.println(emp2.age);
-		System.out.println(emp2.salary);
-		System.out.println(Employee.experience);
+		System.out.println(emp2.age);				//16
+		System.out.println(emp2.salary);			//0
+		System.out.println(Employee.experience);	//0
 	}
 }

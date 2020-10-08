@@ -1,7 +1,7 @@
-package com.example.java.g_serializable_clonable.c_cloning_shallowCopy;
+package com.example.java.g_serializable_clonable.e_cloning_deepCopy;
 
 
-class Course {
+class Course implements Cloneable {
 	String subject1;
 	String subject2;
 	String subject3;
@@ -10,6 +10,9 @@ class Course {
 		this.subject1 = sub1;
 		this.subject2 = sub2;
 		this.subject3 = sub3;
+	}
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 }
 
@@ -26,19 +29,22 @@ class Student implements Cloneable {
 	}
 
 	protected Object clone() throws CloneNotSupportedException {
-		return super.clone();
+		Student student = (Student) super.clone();
+		student.course = (Course) course.clone();
+		return student;
 	}
 }
 
 
-public class ShallowCopy {
+public class DeepCopy {
 	public static void main(String[] args) throws CloneNotSupportedException {
-		Course course = new Course("Physics", "Chemistry", "Biology");
-		Student student1 = new Student(111, "John", course);
-		Student student2 = (Student) student1.clone();
-		
+		Course science = new Course("Physics", "Chemistry", "Biology");
+		Student student1 = new Student(111, "John", science);
+		Student student2 = null;
+		student2 = (Student) student1.clone();
+
 		System.out.println(student1.course.subject3); 	// Output: Biology
 		student2.course.subject3 = "Maths";
-		System.out.println(student1.course.subject3); 	// Output: Maths
+		System.out.println(student1.course.subject3); 	// Output: Biology
 	}
 }
