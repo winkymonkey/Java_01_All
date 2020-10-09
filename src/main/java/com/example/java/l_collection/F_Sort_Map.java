@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
 
 
@@ -16,44 +15,44 @@ import java.util.TreeMap;
 
 public class F_Sort_Map {
 	public static void main(String[] args) {
-		sortByKey_stringAsKey();
-		sortByKey_stringAsKey_customOrder();
-		sortByKey_objectAsKey();
-		sortByKey_objectAsKey_customOrder();
-		sortByValue();
+		sort_MapKeysOf_string_naturalOrder();					System.out.println("----------");
+		sort_MapKeysOf_string_customOrder();					System.out.println("----------");
+		sort_MapKeysOf_anyObject_implementsComparable();		System.out.println("----------");
+		sort_MapKeysOf_anyObject_dontImplementComparable();		System.out.println("----------");
+		sort_MapValuesOf_string();								System.out.println("----------");
 	}
 	
 	
 	
-	private static void sortByKey_stringAsKey() {
+	
+	
+	private static void sort_MapKeysOf_string_naturalOrder() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Cameron", "pqr");
 		map.put("Bob", "abc");
 		map.put("Alice", "xyz");
 		
 		TreeMap<String, String> treemap = new TreeMap<>(map);
-		Set<Entry<String, String>> entryset = treemap.entrySet();
-		
-		entryset.forEach(str->System.out.println(str));
+		treemap.entrySet().forEach(str->System.out.println(str));
 	}
 	
-	
-	
-	private static void sortByKey_stringAsKey_customOrder() {
+	private static void sort_MapKeysOf_string_customOrder() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Cameron", "pqr");
 		map.put("Bob", "abc");
 		map.put("Alice", "xyz");
 		
-		Set<Entry<String, String>> entryset = map.entrySet();
-		List<Entry<String, String>> entrylist = new ArrayList<>(entryset);
+		List<Entry<String, String>> entrylist = new ArrayList<>(map.entrySet());
 		Collections.sort(entrylist, (entry1, entry2)->(entry1.getKey().length()-entry2.getKey().length()) );
+		entrylist.forEach(entry -> System.out.println(entry.getKey()) );
 	}
 	
 	
 	
-	private static void sortByKey_objectAsKey() {
-		class Student {
+	
+	
+	private static void sort_MapKeysOf_anyObject_implementsComparable() {
+		class Student implements Comparable<Student> {
 			private String name;
 			private int age;
 			Student(String name, int age) {
@@ -63,25 +62,24 @@ public class F_Sort_Map {
 			public String getName() {
 				return name;
 			}
+			@SuppressWarnings("unused")
 			public int getAge() {
 				return age;
 			}
+			public int compareTo(Student st) {
+				return this.name.compareTo(st.name);
+			}
 		}
 		Map<Student, String> map = new HashMap<>();
-		Student s1 = new Student("Cameron", 33);
-		Student s2 = new Student("Bob", 66);
-		Student s3 = new Student("Alice", 11);
-		map.put(s2, "vvv");
-		map.put(s3, "ppp");
-		map.put(s1, "ccc");
+		map.put(new Student("Bob", 66), "vvv");
+		map.put(new Student("Alice", 11), "ppp");
+		map.put(new Student("Cameron", 33), "ccc");
 		
 		TreeMap<Student, String> treemap = new TreeMap<>(map);
-		treemap.entrySet().forEach(entry -> System.out.println(entry.getKey().getName() +","+ entry.getKey().getAge() ));
+		treemap.entrySet().forEach(entry -> System.out.println(entry.getKey().getName()) );
 	}
 	
-	
-	
-	private static void sortByKey_objectAsKey_customOrder() {
+	private static void sort_MapKeysOf_anyObject_dontImplementComparable() {
 		class Student {
 			private String name;
 			private int age;
@@ -97,33 +95,26 @@ public class F_Sort_Map {
 			}
 		}
 		Map<Student, String> map = new HashMap<>();
-		Student s1 = new Student("Cameron", 33);
-		Student s2 = new Student("Bob", 66);
-		Student s3 = new Student("Alice", 11);
-		map.put(s2, "vvv");
-		map.put(s3, "ppp");
-		map.put(s1, "ccc");
+		map.put(new Student("Bob", 66), "vvv");
+		map.put(new Student("Alice", 11), "ppp");
+		map.put(new Student("Cameron", 33), "ccc");
 		
-		Set<Entry<Student, String>> entryset = map.entrySet();
-		List<Entry<Student, String>> entrylist = new ArrayList<>(entryset);
+		List<Entry<Student, String>> entrylist = new ArrayList<>(map.entrySet());
 		Collections.sort(entrylist, (entry1, entry2)->entry1.getKey().getAge()-entry2.getKey().getAge() );
-		entrylist.forEach(entry -> System.out.println(entry.getKey().getName() +","+ entry.getKey().getAge()) );
+		entrylist.forEach(entry -> System.out.println(entry.getKey().getName()) );
 	}
 	
 	
 	
-	private static void sortByValue() {
+	private static void sort_MapValuesOf_string() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Cameron", "pqr");
 		map.put("Bob", "abc");
 		map.put("Alice", "xyz");
 		
-		Set<Entry<String, String>> entryset = map.entrySet();
-		List<Entry<String, String>> entrylist = new ArrayList<Entry<String, String>>(entryset);
+		List<Entry<String, String>> entrylist = new ArrayList<Entry<String, String>>(map.entrySet());
 		Collections.sort(entrylist, (entry1,entry2)->entry1.getValue().compareTo(entry2.getValue()));
-		
 		entrylist.forEach(str -> System.out.println(str));
 	}
+	
 }
-
-

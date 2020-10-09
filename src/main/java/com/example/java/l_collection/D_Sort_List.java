@@ -10,43 +10,44 @@ import java.util.List;
 // If T not implements Comparable --- Collections.sort(List<T>, Comparator<? super T>)
 
 
-@SuppressWarnings("unused")
 public class D_Sort_List {
 	public static void main(String[] args) {
-		sort_ListOf_string_naturalOrder();			System.out.println("----------");
-		sort_ListOf_string_customOrder();			System.out.println("----------");
-		sort_ListOf_objectImplementsComparable();	System.out.println("----------");
-		sort_ListOf_anyObject();					System.out.println("----------");
-		sort_ListOf_anyObject_java8();				System.out.println("----------");
+		sort_ListOf_string_naturalOrder();							System.out.println("----------");
+		sort_ListOf_string_customOrder();							System.out.println("----------");
+		sort_ListOf_object_implementsComparable();					System.out.println("----------");
+		sort_ListOf_object_dontImplementComparable();				System.out.println("----------");
+		sort_ListOf_object_dontImplementComparable_Java8style();	System.out.println("----------");
 	}
+	
+	
 	
 	
 	
 	private static void sort_ListOf_string_naturalOrder() {
 		List<String> list = new ArrayList<>();
-		list.add("Bob");
 		list.add("Alice");
 		list.add("Cameron");
+		list.add("Bob");
 		
 		Collections.sort(list);
-		list.forEach(str->System.out.println(str));			//Alice Bob Cameron
+		list.forEach(str->System.out.println(str));							//Alice Bob Cameron
 	}
-	
-	
 	
 	private static void sort_ListOf_string_customOrder() {
 		List<String> list = new ArrayList<>();
+		list.add("Alice");
 		list.add("Cameron");
 		list.add("Bob");
-		list.add("Alice");
 		
 		Collections.sort(list, (s1,s2)->(s1.length()-s2.length()) );
-		list.forEach(str->System.out.println(str));						//Bob Alice Cameron
+		list.forEach(str->System.out.println(str));							//Bob Alice Cameron
 	}
 	
 	
 	
-	private static void sort_ListOf_objectImplementsComparable() {
+	
+	
+	private static void sort_ListOf_object_implementsComparable() {
 		class Student implements Comparable<Student> {
 			private String name;
 			private int age;
@@ -57,6 +58,7 @@ public class D_Sort_List {
 			public String getName() {
 				return name;
 			}
+			@SuppressWarnings("unused")
 			public int getAge() {
 				return age;
 			}
@@ -65,22 +67,17 @@ public class D_Sort_List {
 				//return this.getAge() - st.getAge();
 			}
 		}
-		
 		List<Student> list = new ArrayList<>();
-		Student s1 = new Student("Bob", 33);
-		Student s2 = new Student("Alice", 66);
-		Student s3 = new Student("Cameron", 11);
-		list.add(s1);
-		list.add(s2);
-		list.add(s3);
+		list.add(new Student("Alice", 66));
+		list.add(new Student("Cameron", 11));
+		list.add(new Student("Bob", 33));
 		
 		Collections.sort(list);
-		list.forEach(student->System.out.println(student.getName()));	//Alice Bob Cameron
+		list.forEach(student->System.out.println(student.getName()));		//Alice Bob Cameron
 	}
 	
 	
-	
-	private static void sort_ListOf_anyObject() {
+	private static void sort_ListOf_object_dontImplementComparable() {
 		class Student {
 			private String name;
 			private int age;
@@ -95,25 +92,17 @@ public class D_Sort_List {
 				return age;
 			}
 		}
-		
 		List<Student> list = new ArrayList<>();
-		Student s1 = new Student("Bob", 33);
-		Student s2 = new Student("Alice", 66);
-		Student s3 = new Student("Cameron", 11);
-		list.add(s1);
-		list.add(s2);
-		list.add(s3);
+		list.add(new Student("Alice", 66));
+		list.add(new Student("Cameron", 11));
+		list.add(new Student("Bob", 33));
 		
-		Collections.sort(list, (st1,st2)->(st1.getName().compareTo(st2.getName())) );
-		list.forEach(student->System.out.println(student.getName()));					//Alice Bob Cameron
-		System.out.println();
 		Collections.sort(list, (st1,st2)->(st1.getAge()-st2.getAge()) );
-		list.forEach(student->System.out.println(student.getName()));					//Cameron Bob Alice
+		list.forEach(student->System.out.println(student.getName()));			//Cameron Bob Alice
 	}
 	
 	
-	
-	private static void sort_ListOf_anyObject_java8() {
+	private static void sort_ListOf_object_dontImplementComparable_Java8style() {
 		class Student {
 			private String name;
 			private int age;
@@ -128,14 +117,10 @@ public class D_Sort_List {
 				return age;
 			}
 		}
-		
 		List<Student> list = new ArrayList<>();
-		Student s1 = new Student("Bob", 33);
-		Student s2 = new Student("Alice", 66);
-		Student s3 = new Student("Cameron", 11);
-		list.add(s1);
-		list.add(s2);
-		list.add(s3);
+		list.add(new Student("Alice", 66));
+		list.add(new Student("Cameron", 11));
+		list.add(new Student("Bob", 33));
 		
 		//natural ordering of "name"
 		Collections.sort(list, Comparator.comparing(Student::getName));
@@ -146,6 +131,5 @@ public class D_Sort_List {
 		//custom ordering of "name"
 		Collections.sort(list, Comparator.comparing(Student::getName, (st1,st2)->st1.compareTo(st2)) );
 	}
+	
 }
-
-
