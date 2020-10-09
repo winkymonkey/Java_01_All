@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 @SuppressWarnings("unused")
 public class C_TerminalOps_collectorAPI {
 	public static void main(String[] args) {
-		/*-------------------------------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------------*/
 		class Employee {
 			private int id;
 			private String name;
@@ -52,7 +52,7 @@ public class C_TerminalOps_collectorAPI {
 		
 		Stream<String> streamOfStr = strList.stream();
 		Stream<Employee> streamOfObj = objList.stream();
-		/*-------------------------------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------------*/
 		
 		
 		
@@ -88,17 +88,21 @@ public class C_TerminalOps_collectorAPI {
 		 * Using "Collectors.toMap()"
 		 * ---------------------------
 		 */
-		// "KeyMapper"---- A Function to produce map keys
-		// "ValueMapper"-- A Function to produce map values
-		// Mapped keys cannot contain duplicates
+		// "Function KeyMapper" ---- To produce map keys
+		// "Function ValueMapper" -- To produce map values
 		Map<Integer, String> map1 = streamOfStr.collect(Collectors.toMap(str->str.length(), str->str));
 		Map<Integer, String> map2 = streamOfObj.collect(Collectors.toMap(Employee::getId, Employee::getName));
 		
-		// "MergeFunction"--- Defines how to merge the values if keys are duplicate (as per Object.equals())
+		// "Function KeyMapper" ------------- To produce map keys
+		// "Function ValueMapper" ----------- To produce map values
+		// "BinaryOperator MergeFunction" --- How to merge the values if keys are duplicate (according to Object.equals())
 		Map<Integer, String> map3 = streamOfStr.collect(Collectors.toMap(str->str.length(), str->str, (val1,val2)->val1+"&"+val2));
 		Map<Integer, String> map4 = streamOfObj.collect(Collectors.toMap(Employee::getId, Employee::getName, (val1,val2)->val1+"&"+val2));
 		
-		// "Supplier"-------- Defines a specific Map implementation where the result should be stored
+		// "Function KeyMapper" ------------- To produce map keys
+		// "Function ValueMapper" ----------- To produce map values
+		// "BinaryOperator MergeFunction" --- How to merge the values if keys are duplicate (according to Object.equals())
+		// "Supplier mapSupplier" ----------- A function which returns a new, empty Map into which the results will be inserted
 		LinkedHashMap<Integer, String> map5 = streamOfStr.collect(Collectors.toMap(str->str.length(), str->str, (val1,val2)->val1+"&"+val2, LinkedHashMap::new));
 		LinkedHashMap<Integer, String> map6 = streamOfObj.collect(Collectors.toMap(Employee::getId, Employee::getName, (val1,val2)->val1+"&"+val2, LinkedHashMap::new));
 	

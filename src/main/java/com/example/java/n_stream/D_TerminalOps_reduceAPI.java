@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 @SuppressWarnings("unused")
 public class D_TerminalOps_reduceAPI {
 	public static void main(String[] args) {
-		/*-------------------------------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------------*/
 		class Employee {
 			private int id;
 			private String name;
@@ -46,14 +46,14 @@ public class D_TerminalOps_reduceAPI {
 		
 		Stream<String> streamOfStr = strList.stream();
 		Stream<Employee> streamOfObj = objList.stream();
-		/*-------------------------------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------------*/
 		
 		
 		
 		/**
-		 * ---------------------------------------------
-		 * Using "reduce()" -- with collection of String
-		 * ---------------------------------------------
+		 * ------------------------------------------------------------
+		 * Using "reduce(BinaryOperator)" -- with collection of String
+		 * ------------------------------------------------------------
 		 */
 		Optional<String> optn1 = streamOfStr.reduce((str1,str2) -> str1+","+str2);
 		optn1.ifPresent(str -> System.out.println(str));
@@ -61,9 +61,9 @@ public class D_TerminalOps_reduceAPI {
 		
 		
 		/**
-		 * ---------------------------------------------
-		 * Using "reduce()" -- with collection of Object
-		 * ---------------------------------------------
+		 * ------------------------------------------------------------
+		 * Using "reduce(BinaryOperator)" -- with collection of Object
+		 * ------------------------------------------------------------
 		 */
 		Optional<Employee> optn2 = streamOfObj.reduce((e1,e2) -> e1.getId()>e2.getId() ? e1:e2);
 		optn2.ifPresent(emp1 -> System.out.println(emp1.getName()));

@@ -5,6 +5,7 @@ import java.util.stream.IntStream;
 
 
 public class G_Laziness_in_parallelStream {
+	
 	public static void main(String[] args) {
 		IntStream stream = IntStream.range(1, 7).parallel();
 		stream = stream.peek(i -> log("starting", i))
@@ -15,7 +16,7 @@ public class G_Laziness_in_parallelStream {
 	}
 	
 	
-	public static void log(Object... objects) {
+	private static void log(Object... objects) {
 		String s = LocalTime.now().toString();
 		for (Object object : objects) {
 			s = s + " - " + object.toString();

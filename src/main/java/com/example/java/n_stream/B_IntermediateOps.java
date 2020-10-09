@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 @SuppressWarnings("unused")
 public class B_IntermediateOps {
 	public static void main(String[] args) {
-		/*-------------------------------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------------*/
 		class Employee {
 			private int id;
 			private String name;
@@ -47,33 +47,33 @@ public class B_IntermediateOps {
 												new Employee(6, "George", "Developer", "India"));
 		
 		Stream<String> streamOfStr = strList.stream();
-		Stream<Employee> streamOfObj = objList.stream();
-		/*-------------------------------------------------------------------------------------------------------------------*/
+		Stream<Employee> streamOfObj = objList.stream();		
+		/*--------------------------------------------------------------------------------------------------*/
 		
 		
 		
 		/**
-		 * ----------------------
-		 * Using "map()"
-		 * ----------------------
+		 * ---------------------------
+		 * Using "map(Function)"
+		 * ---------------------------
 		 */
 		Stream<Integer> stream1 = streamOfStr.map(str->str.length());
-		Stream<String> stream2 = streamOfObj.map(emp->emp.getName());		//same as --- streamOfObj.map(obj -> {return obj.getName();});
+		Stream<String> stream2 = streamOfObj.map(emp->emp.getName());		//same as --- streamOfObj.map(emp -> {return emp.getName();});
 		
 		
 		/**
-		 * ----------------------
-		 * Using "filter()"
-		 * ----------------------
+		 * ---------------------------
+		 * Using "filter(Predicate)"
+		 * ---------------------------
 		 */
 		Stream<String> stream3 = streamOfStr.filter(str->str.startsWith("S"));
 		Stream<Employee> stream4 = streamOfObj.filter(emp->emp.getRole().startsWith("D"));
 		
 		
 		/**
-		 * ----------------------
-		 * Using "sorted()"
-		 * ----------------------
+		 * ---------------------------
+		 * Using "sorted(Comparator)"
+		 * ---------------------------
 		 */
 		Stream<String> stream5 = streamOfStr.sorted();
 		Stream<Employee> stream6 = streamOfObj.sorted(Comparator.comparing(Employee::getId));
@@ -91,7 +91,7 @@ public class B_IntermediateOps {
 		
 		/**
 		 * ----------------------
-		 * Using "limit()"
+		 * Using "limit(long)"
 		 * ----------------------
 		 */
 		Stream<String> stream10 = streamOfStr.limit(5);
@@ -99,32 +99,32 @@ public class B_IntermediateOps {
 		
 		
 		/**
-		 * ----------------------------------------------
-		 * Using "flatMap()" -- with collection of String
-		 * ----------------------------------------------
+		 * -------------------------------------------------------
+		 * Using "flatMap(Function)" -- with collection of String
+		 * -------------------------------------------------------
 		 */
 		List<String> list1 = Arrays.asList("CC","GG","AA","PP");
 		List<String> list2 = Arrays.asList("XX","MM","BB");
 		List<String> list3 = Arrays.asList("CC","AA","FF","YY");
 		Stream<List<String>> streamOfLists = Stream.of(list1, list2, list3);
-		Stream<String> stream = streamOfLists.flatMap(eachList -> eachList.stream());
+		Stream<String> stream12 = streamOfLists.flatMap(eachList -> eachList.stream());
 		
 		
 		/**
-		 * -----------------------------------------------
-		 * Using "flatMap()" -- with collection of Objects
-		 * -----------------------------------------------
+		 * --------------------------------------------------------
+		 * Using "flatMap(Function)" -- with collection of Objects
+		 * --------------------------------------------------------
 		 */
 		class OrderLineItem {
-			String itemName;
+			private String itemName;
 			public OrderLineItem(String itemName) {
 				this.itemName = itemName;
 			}
 		}
 		class Order {
-			int oid;
-			List<OrderLineItem> lineItemList;
-			public Order(int oid, List<OrderLineItem> lineItemList) {
+			private Integer oid;
+			private List<OrderLineItem> lineItemList;
+			public Order(Integer oid, List<OrderLineItem> lineItemList) {
 				this.oid = oid;
 				this.lineItemList = lineItemList;
 			}
@@ -133,7 +133,7 @@ public class B_IntermediateOps {
 		Order o2 = new Order(456, Arrays.asList(new OrderLineItem("AAA"), new OrderLineItem("BBB")));
 		Order o3 = new Order(789, Arrays.asList(new OrderLineItem("AAA"), new OrderLineItem("XXX"), new OrderLineItem("PPP")));
 		List<Order> orderList = Arrays.asList(o1,o2,o3);
-		Stream<OrderLineItem> orderLineItemStream = orderList.stream().flatMap(order -> order.lineItemList.stream());
+		Stream<OrderLineItem> stream13 = orderList.stream().flatMap(order -> order.lineItemList.stream());
 	}
 }
 

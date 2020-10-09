@@ -51,18 +51,18 @@ public class E_TerminalOps_others {
 		
 		
 		/**
-		 * -----------------
-		 * Using "forEach()"
-		 * -----------------
+		 * --------------------------
+		 * Using "forEach(Consumer)"
+		 * --------------------------
 		 */
 		streamOfStr.forEach(str -> System.out.println(str+","));
 		streamOfObj.forEach(obj -> System.out.println(obj.getName()));
 		
 		
 		/**
-		 * ------------------
-		 * Using "anyMatch()"
-		 * ------------------
+		 * ----------------------------
+		 * Using "anyMatch(Predicate)"
+		 * ----------------------------
 		 */
 		streamOfStr.anyMatch(str -> str.startsWith("S"));
 		streamOfObj.anyMatch(obj -> obj.getId()>4);
