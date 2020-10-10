@@ -11,7 +11,7 @@ class MonitorObject {
 class Test13 {
 	MonitorObject monitorObj = new MonitorObject();
 
-	public void doWait() {
+	public void doWait() {					//called by the waiting thread
 		synchronized (monitorObj) {
 			try {
 				monitorObj.wait();
@@ -22,7 +22,7 @@ class Test13 {
 		}
 	}
 
-	public void doNotify() {
+	public void doNotify() {				//called by the notifying thread
 		synchronized (monitorObj) {
 			monitorObj.notify();
 		}
@@ -39,7 +39,7 @@ class Test14 {
 	MonitorObject monitorObj = new MonitorObject();
 	boolean wasSignalled = false;
 
-	public void doWait() {
+	public void doWait() {					//called by the waiting thread
 		synchronized (monitorObj) {
 			if (!wasSignalled) {			//if notifying signal is not already triggered
 				try {
@@ -53,7 +53,7 @@ class Test14 {
 		}
 	}
 
-	public void doNotify() {
+	public void doNotify() {				//called by the notifying thread
 		synchronized (monitorObj) {
 			wasSignalled = true;
 			monitorObj.notify();
