@@ -1,7 +1,8 @@
 package com.example.java.o_multithreading.a_lowLevel;
 
 
-class Test12 {
+public class J1_ThreadSafety_Threadlocal {
+	
 	public static void main(String[] args) throws InterruptedException {
 		ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
 
@@ -12,9 +13,10 @@ class Test12 {
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			threadLocal.set((int) (Math.random() * 100D));
-			System.out.println(threadLocal.get());
+			threadLocal.set(100);
+			System.out.println("threadLocal of t1 " + threadLocal.get());	//100
 		});
+		
 		Thread t2 = new Thread(() -> {
 			try {
 				Thread.sleep(1000);
@@ -22,13 +24,12 @@ class Test12 {
 			catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			threadLocal.set((int) (Math.random() * 100D));
-			System.out.println(threadLocal.get());
+			threadLocal.set(200);
+			System.out.println("threadLocal of t2 " + threadLocal.get());	//200
 		});
+		
 		t1.start();
 		t2.start();
 	}
 }
 
-
-//ThreadLocal<Integer> threadLocal2 = ThreadLocal.withInitial(() -> {return 100;});

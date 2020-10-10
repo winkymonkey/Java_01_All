@@ -1,19 +1,7 @@
 package com.example.java.o_multithreading.a_lowLevel;
 
 
-/************************************/
-/**				Volatile			*/
-/************************************/
-class SharedObject {
-	public volatile int counter = 0;
-}
-
-
-
-/********************************************************/
-/**			Volatile full visibility guarantee			*/
-/********************************************************/
-class Test11 {
+public class H_ThreadSafety_Volatile {
 	private int years;
 	private int months;
 	private volatile int days;
@@ -31,3 +19,4 @@ class Test11 {
 		this.days = days;			//writing to a volatile variable should be at end
 	}
 }
+

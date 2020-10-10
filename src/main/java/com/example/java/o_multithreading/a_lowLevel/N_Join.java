@@ -1,7 +1,8 @@
 package com.example.java.o_multithreading.a_lowLevel;
 
 
-class Test20 {
+public class N_Join {
+	
 	public static void main(String[] args) {
 		Thread t1 = new Thread(() -> {
 			for(int i=0; i<50; i++) {

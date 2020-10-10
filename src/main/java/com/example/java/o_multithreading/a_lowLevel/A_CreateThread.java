@@ -1,7 +1,8 @@
 package com.example.java.o_multithreading.a_lowLevel;
 
 
-class Test1 {
+public class A_CreateThread {
+	
 	public static void main(String[] args) {
 		Thread t1 = new Thread() {
 			@Override
@@ -10,12 +11,8 @@ class Test1 {
 			}
 		};
 		t1.start();
-	}
-}
-
-
-class Test2 {
-	public static void main(String[] args) {
+		
+		
 		Thread t2 = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -23,12 +20,8 @@ class Test2 {
 			}
 		});
 		t2.start();
-	}
-}
-
-
-class Test3 {
-	public static void main(String[] args) {
+		
+		
 		Thread t3 = new Thread(() -> {/*... code to be executed by this thread ...*/} );
 		t3.start();
 	}
