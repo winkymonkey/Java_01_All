@@ -3,7 +3,8 @@ package com.example.java.o_multithreading.c_highLevel_LockAPI;
 import java.util.concurrent.locks.StampedLock;
 
 
-class Test04 {
+public class C_StampedLock {
+	
 	public void demoReadLock() {
 		StampedLock lock = new StampedLock();
 		long stamp = lock.readLock();

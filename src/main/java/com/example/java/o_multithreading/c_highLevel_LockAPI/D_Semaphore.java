@@ -3,7 +3,7 @@ package com.example.java.o_multithreading.c_highLevel_LockAPI;
 import java.util.concurrent.Semaphore;
 
 
-class Test05 {
+public class D_Semaphore {
 	public static void main(String[] args) {
 		Semaphore semaphore = new Semaphore(4);
 		System.out.println("Total available Semaphore permits : " + semaphore.availablePermits());
@@ -16,8 +16,8 @@ class Test05 {
 
 
 class MyThread extends Thread {
-	String name;
-	Semaphore semaphore;
+	private String name;
+	private Semaphore semaphore;
 
 	MyThread(String name, Semaphore semaphore) {
 		this.name = name;
@@ -26,8 +26,7 @@ class MyThread extends Thread {
 	
 	public void run() {
 		try {
-			System.out.println(name + " : acquiring lock...");
-			System.out.println(name + " : available permits=" + semaphore.availablePermits());
+			System.out.println(name + " : acquiring lock... available permits=" + semaphore.availablePermits());
 			semaphore.acquire();
 			System.out.println(name + " : got the permit!");
 			try {
@@ -39,7 +38,7 @@ class MyThread extends Thread {
 			finally {
 				System.out.println(name + " : releasing lock...");
 				semaphore.release();
-				System.out.println(name + " : available permits=" + semaphore.availablePermits());
+				System.out.println(name + " : lock released... available permits=" + semaphore.availablePermits());
 			}
 		}
 		catch (InterruptedException e) {
@@ -47,5 +46,3 @@ class MyThread extends Thread {
 		}
 	}
 }
-
-

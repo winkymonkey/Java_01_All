@@ -4,7 +4,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 
-class Test06 {
+public class E_CyclicBarrier {
 	public static void main(String[] args) {
 		CyclicBarrier barrier = new CyclicBarrier(3);
 		new ExampleThread("A", barrier).start();
@@ -13,9 +13,10 @@ class Test06 {
 	}
 }
 
+
 class ExampleThread extends Thread {
-	String name;
-	CyclicBarrier barrier;
+	private String name;
+	private CyclicBarrier barrier;
 
 	ExampleThread(String name, CyclicBarrier barrier) {
 		this.name = name;

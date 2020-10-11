@@ -3,11 +3,11 @@ package com.example.java.o_multithreading.c_highLevel_LockAPI;
 import java.util.concurrent.CountDownLatch;
 
 
-class Test07 {	
+public class F_CountdownLatch {	
 	public static void main(String[] args) {
 		CountDownLatch latch = new CountDownLatch(3);
 		
-		Thread waiter = new Thread(() ->{
+		Thread waiter = new Thread(() -> {
 			try {
 				latch.await();
 			}
@@ -18,7 +18,7 @@ class Test07 {
 		});
 		waiter.start();
 		
-		Thread decrementer = new Thread(() ->{
+		Thread decrementer = new Thread(() -> {
 			try {
 				Thread.sleep(1000);
 				latch.countDown();
@@ -37,4 +37,3 @@ class Test07 {
 		decrementer.start();
 	}
 }
-
