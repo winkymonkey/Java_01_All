@@ -13,7 +13,7 @@ import java.util.Set;
 
 
 @SuppressWarnings("unused")
-public class E_Sort_Set {
+public class D_Sort_Set {
 	public static void main(String[] args) {
 		sort_SetOf_string_naturalOrder();			System.out.println("----------");
 		sort_SetOf_string_customOrder();			System.out.println("----------");
