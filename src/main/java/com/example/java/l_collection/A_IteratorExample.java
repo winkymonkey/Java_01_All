@@ -1,19 +1,35 @@
 package com.example.java.l_collection;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 
-public class B_Iterator_Map {
+public class A_IteratorExample {
 	public static void main(String[] args) {
-		iterate_listOfString();
-		//iterate_listOfObject();	//same as above
+		iterateOverList();
+		iterateOverMap();
 	}
 	
 	
-	private static void iterate_listOfString() {
+	private static void iterateOverList() {
+		List<String> listOfStr = new ArrayList<>();
+		listOfStr.add("hhh");
+		listOfStr.add("aaa");
+		listOfStr.add("kkk");
+		
+		Iterator<String> itr = listOfStr.iterator();
+		while(itr.hasNext()) {
+			String elem = itr.next();
+			System.out.println(elem);
+		}
+	}
+	
+	
+	private static void iterateOverMap() {
 		Map<String, String> map = new HashMap<>();
 		map.put("b1", "pqr");
 		map.put("c1", "abc");
@@ -25,6 +41,5 @@ public class B_Iterator_Map {
 			System.out.println(entry.getKey() + "---" + entry.getValue());
 		}
 	}
+	
 }
-
-
