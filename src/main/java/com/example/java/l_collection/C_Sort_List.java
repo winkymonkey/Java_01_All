@@ -10,7 +10,7 @@ import java.util.List;
 // If T not implements Comparable --- Collections.sort(List<T>, Comparator<? super T>)
 
 
-public class D_Sort_List {
+public class C_Sort_List {
 	public static void main(String[] args) {
 		sort_ListOf_string_naturalOrder();							System.out.println("----------");
 		sort_ListOf_string_customOrder();							System.out.println("----------");
