@@ -5,7 +5,7 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 
 
-public class G_IdentityHashMap {
+public class F_IdentityHashMap {
 	public static void main(String[] args) {
 		Map<String, Integer> hashMap = new HashMap<>();
 		hashMap.put("a", 1);

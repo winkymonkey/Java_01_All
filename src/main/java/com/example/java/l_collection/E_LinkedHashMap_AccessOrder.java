@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 
-public class F_LinkedHashMap_AccessOrder {
+public class E_LinkedHashMap_AccessOrder {
 	public static void main(String[] args) {
 		Map<String, Integer> map = new LinkedHashMap<String, Integer>(16, 0.75F, true);
 		map.put("A", 1);

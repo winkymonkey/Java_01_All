@@ -13,7 +13,7 @@ import java.util.TreeMap;
 //Otherwise use ---- "Collections.sort(List<T>, Comparator<? super T>)
 
 
-public class E_Sort_Map {
+public class D_Sort_Map {
 	public static void main(String[] args) {
 		sort_MapKeysOf_string_naturalOrder();					System.out.println("----------");
 		sort_MapKeysOf_string_customOrder();					System.out.println("----------");
