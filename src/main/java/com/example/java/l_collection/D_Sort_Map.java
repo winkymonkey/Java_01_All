@@ -9,24 +9,19 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 
-//Use -------------- "Collections.sort(List<T>)" --- T must implement Comparable
-//Otherwise use ---- "Collections.sort(List<T>, Comparator<? super T>)
-
-
 public class D_Sort_Map {
 	public static void main(String[] args) {
-		sort_MapKeysOf_string_naturalOrder();					System.out.println("----------");
-		sort_MapKeysOf_string_customOrder();					System.out.println("----------");
-		sort_MapKeysOf_anyObject_implementsComparable();		System.out.println("----------");
-		sort_MapKeysOf_anyObject_dontImplementComparable();		System.out.println("----------");
-		sort_MapValuesOf_string();								System.out.println("----------");
+		sort_MapKey_String_naturalOrder();				System.out.println("----------");
+		sort_MapKey_String_customOrder();				System.out.println("----------");
+		sort_MapKey_Object_implementsComparable();		System.out.println("----------");
+		sort_MapKey_Object_dontImplementComparable();	System.out.println("----------");
+		sort_MapValues_String();						System.out.println("----------");
 	}
 	
 	
 	
 	
-	
-	private static void sort_MapKeysOf_string_naturalOrder() {
+	private static void sort_MapKey_String_naturalOrder() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Cameron", "pqr");
 		map.put("Bob", "abc");
@@ -36,7 +31,7 @@ public class D_Sort_Map {
 		treemap.entrySet().forEach(str->System.out.println(str));
 	}
 	
-	private static void sort_MapKeysOf_string_customOrder() {
+	private static void sort_MapKey_String_customOrder() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Cameron", "pqr");
 		map.put("Bob", "abc");
@@ -50,8 +45,7 @@ public class D_Sort_Map {
 	
 	
 	
-	
-	private static void sort_MapKeysOf_anyObject_implementsComparable() {
+	private static void sort_MapKey_Object_implementsComparable() {
 		class Student implements Comparable<Student> {
 			private String name;
 			private int age;
@@ -79,7 +73,8 @@ public class D_Sort_Map {
 		treemap.entrySet().forEach(entry -> System.out.println(entry.getKey().getName()) );
 	}
 	
-	private static void sort_MapKeysOf_anyObject_dontImplementComparable() {
+	
+	private static void sort_MapKey_Object_dontImplementComparable() {
 		class Student {
 			private String name;
 			private int age;
@@ -106,7 +101,8 @@ public class D_Sort_Map {
 	
 	
 	
-	private static void sort_MapValuesOf_string() {
+	
+	private static void sort_MapValues_String() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Cameron", "pqr");
 		map.put("Bob", "abc");

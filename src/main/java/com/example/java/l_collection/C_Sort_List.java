@@ -6,24 +6,19 @@ import java.util.Comparator;
 import java.util.List;
 
 
-// If T implements Comparable ------- Collections.sort(List<T>)
-// If T not implements Comparable --- Collections.sort(List<T>, Comparator<? super T>)
-
-
 public class C_Sort_List {
 	public static void main(String[] args) {
-		sort_ListOf_string_naturalOrder();							System.out.println("----------");
-		sort_ListOf_string_customOrder();							System.out.println("----------");
-		sort_ListOf_object_implementsComparable();					System.out.println("----------");
-		sort_ListOf_object_dontImplementComparable();				System.out.println("----------");
-		sort_ListOf_object_dontImplementComparable_Java8style();	System.out.println("----------");
+		sort_ListOf_String_naturalOrder();							System.out.println("----------");
+		sort_ListOf_String_customOrder();							System.out.println("----------");
+		sort_ListOf_Object_implementsComparable();					System.out.println("----------");
+		sort_ListOf_Object_dontImplementComparable();				System.out.println("----------");
+		sort_ListOf_Object_dontImplementComparable_Java8style();	System.out.println("----------");
 	}
 	
 	
 	
 	
-	
-	private static void sort_ListOf_string_naturalOrder() {
+	private static void sort_ListOf_String_naturalOrder() {
 		List<String> list = new ArrayList<>();
 		list.add("Alice");
 		list.add("Cameron");
@@ -33,7 +28,7 @@ public class C_Sort_List {
 		list.forEach(str->System.out.println(str));							//Alice Bob Cameron
 	}
 	
-	private static void sort_ListOf_string_customOrder() {
+	private static void sort_ListOf_String_customOrder() {
 		List<String> list = new ArrayList<>();
 		list.add("Alice");
 		list.add("Cameron");
@@ -46,8 +41,7 @@ public class C_Sort_List {
 	
 	
 	
-	
-	private static void sort_ListOf_object_implementsComparable() {
+	private static void sort_ListOf_Object_implementsComparable() {
 		class Student implements Comparable<Student> {
 			private String name;
 			private int age;
@@ -77,7 +71,7 @@ public class C_Sort_List {
 	}
 	
 	
-	private static void sort_ListOf_object_dontImplementComparable() {
+	private static void sort_ListOf_Object_dontImplementComparable() {
 		class Student {
 			private String name;
 			private int age;
@@ -102,7 +96,7 @@ public class C_Sort_List {
 	}
 	
 	
-	private static void sort_ListOf_object_dontImplementComparable_Java8style() {
+	private static void sort_ListOf_Object_dontImplementComparable_Java8style() {
 		class Student {
 			private String name;
 			private int age;
