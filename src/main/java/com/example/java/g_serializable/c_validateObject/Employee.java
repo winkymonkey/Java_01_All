@@ -34,7 +34,7 @@ public class Employee implements Serializable, ObjectInputValidation {
 	
 	public void validateObject() throws InvalidObjectException {
 		System.out.println("validating age");
-		if(age<18 || age>70) {
+		if (age<18 || age>70) {
 			throw new IllegalArgumentException("Not a valid age");
 		}
 	}

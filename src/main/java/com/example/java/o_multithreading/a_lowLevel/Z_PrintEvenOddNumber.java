@@ -15,7 +15,7 @@ public class Z_PrintEvenOddNumber {
 	
 	private static void printOdd(int n) {
 		synchronized(obj) {
-			while(n < MAX) {
+			while (n < MAX) {
 				System.out.println(Thread.currentThread().getName() + "--" +n);
 				n+=2;
 				obj.notify();
@@ -31,7 +31,7 @@ public class Z_PrintEvenOddNumber {
 	
 	private static void printEven(int n) {
 		synchronized(obj) {
-			while(n < MAX) {
+			while (n < MAX) {
 				System.out.println(Thread.currentThread().getName() + "--" +n);
 				n+=2;
 				obj.notify();

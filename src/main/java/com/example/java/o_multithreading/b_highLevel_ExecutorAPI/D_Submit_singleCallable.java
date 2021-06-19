@@ -17,7 +17,7 @@ public class D_Submit_singleCallable {
 		ExecutorService pool = Executors.newSingleThreadExecutor();
 		Future<Integer> future = pool.submit(() -> 123);
 		
-		while(!future.isDone()) {
+		while (!future.isDone()) {
 			System.out.println("task is not done yet");
 		}
 		System.out.println("task is completed");
@@ -30,4 +30,5 @@ public class D_Submit_singleCallable {
 		}
 		pool.shutdown();
 	}
+	
 }

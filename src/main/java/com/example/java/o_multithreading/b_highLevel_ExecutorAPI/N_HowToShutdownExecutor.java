@@ -6,13 +6,14 @@ import java.util.concurrent.TimeUnit;
 
 
 public class N_HowToShutdownExecutor {
+	
 	public static void main(String[] args) {
 		ExecutorService executorService = Executors.newFixedThreadPool(5);
 		// some processing
 
 		executorService.shutdown();
 		try {
-			if(!executorService.awaitTermination(60, TimeUnit.SECONDS)) {
+			if (!executorService.awaitTermination(60, TimeUnit.SECONDS)) {
 				executorService.shutdownNow();
 			}
 		}
@@ -21,4 +22,5 @@ public class N_HowToShutdownExecutor {
 			executorService.shutdownNow();
 		}
 	}
+	
 }

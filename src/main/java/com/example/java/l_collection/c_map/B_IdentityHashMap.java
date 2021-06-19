@@ -1,11 +1,12 @@
-package com.example.java.l_collection;
+package com.example.java.l_collection.c_map;
 
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
 
-public class F_IdentityHashMap {
+public class B_IdentityHashMap {
+	
 	public static void main(String[] args) {
 		Map<String, Integer> hashMap = new HashMap<>();
 		hashMap.put("a", 1);
@@ -18,4 +19,5 @@ public class F_IdentityHashMap {
 		identityMap.put(new String("a"), 2);
 		System.out.println(identityMap);		//{a=1, a=2}
 	}
+
 }

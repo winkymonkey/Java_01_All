@@ -8,7 +8,7 @@ import static java.util.Collections.*;
 class SimpleBox {/***/}
 
 class Box<T> {
-	void add(T t){
+	void add(T t) {
 		/***/emptyList();
 	}
 }

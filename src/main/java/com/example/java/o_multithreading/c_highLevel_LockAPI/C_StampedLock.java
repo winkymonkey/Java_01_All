@@ -31,7 +31,7 @@ public class C_StampedLock {
 		StampedLock lock = new StampedLock();
 		long stamp = lock.tryOptimisticRead();
 		//...read
-		if (!lock.validate(stamp)){		//if a write occurred, try again with a read lock
+		if (!lock.validate(stamp)) {		//if a write occurred, try again with a read lock
 			stamp = lock.readLock();
 			try {
 				//...read
@@ -41,4 +41,5 @@ public class C_StampedLock {
 			}
 		}
 	}
+	
 }

@@ -57,7 +57,7 @@ class SharedResource3 {
 class NotThreadSafe {
 	StringBuilder builder = new StringBuilder();
 
-	public void add(String text){
+	public void add(String text) {
         this.builder.append(text);
     }
 }

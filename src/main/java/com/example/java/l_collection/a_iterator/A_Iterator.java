@@ -1,4 +1,4 @@
-package com.example.java.l_collection;
+package com.example.java.l_collection.a_iterator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 
-public class A_IteratorExample {
+public class A_Iterator {
+	
 	public static void main(String[] args) {
 		iterateOverList();
 		iterateOverMap();
@@ -16,13 +17,13 @@ public class A_IteratorExample {
 	
 	
 	private static void iterateOverList() {
-		List<String> listOfStr = new ArrayList<>();
-		listOfStr.add("hhh");
-		listOfStr.add("aaa");
-		listOfStr.add("kkk");
+		List<String> list = new ArrayList<>();
+		list.add("hhh");
+		list.add("aaa");
+		list.add("kkk");
 		
-		Iterator<String> itr = listOfStr.iterator();
-		while(itr.hasNext()) {
+		Iterator<String> itr = list.iterator();
+		while (itr.hasNext()) {
 			String elem = itr.next();
 			System.out.println(elem);
 		}
@@ -36,9 +37,9 @@ public class A_IteratorExample {
 		map.put("a1", "xyz");
 		
 		Iterator<Entry<String, String>> itr = map.entrySet().iterator();
-		while(itr.hasNext()) {
+		while (itr.hasNext()) {
 			Entry<String, String> entry = itr.next();
-			System.out.println(entry.getKey() + "---" + entry.getValue());
+			System.out.println(entry);
 		}
 	}
 	

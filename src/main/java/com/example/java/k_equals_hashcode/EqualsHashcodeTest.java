@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 
 public class EqualsHashcodeTest {
+	
 	public static void main(String[] args) {
 		Employee emp1 = new Employee();	Employee emp2 = new Employee();	Employee emp3 = new Employee();
 		emp1.setId(100);				emp2.setId(100);				emp3.setId(300);
@@ -14,10 +15,11 @@ public class EqualsHashcodeTest {
 		hash.put(emp2, "value2");
 		hash.put(emp3, "value3");
 		
-		for(Employee movie : hash.keySet()) {
+		for (Employee movie : hash.keySet()) {
 			System.out.println(movie.getId() + " & " +movie.getName());
 		}
 	}
+	
 }
 
 

@@ -24,7 +24,7 @@ public class E_Submit_multipleCallable_poolSubmit {
 		
 		List<Future<Integer>> futures = Arrays.asList(future1, future2, future3);
 		
-		for(Future<Integer> future : futures) {
+		for (Future<Integer> future : futures) {
 			try {
 				Integer result = future.get(10, TimeUnit.SECONDS);
 				System.out.println("result: " + result);
@@ -35,4 +35,5 @@ public class E_Submit_multipleCallable_poolSubmit {
 		}
 		pool.shutdown();
 	}
+	
 }

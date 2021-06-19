@@ -5,7 +5,7 @@ class C2_Interruption_threadWorking {
 	
 	public static void main(String[] args) throws InterruptedException {
 		Thread t1 = new Thread(() -> {
-			while(!Thread.interrupted()) {
+			while (!Thread.interrupted()) {
 				System.out.println("t1::No one interruped me till now");
 			}
 			System.out.println("t1::Someone interrupted me");
@@ -18,4 +18,5 @@ class C2_Interruption_threadWorking {
 		Thread.sleep(1000);								//main thread wait for 1s more
 		System.out.println(t1.isInterrupted());	//false	//main thread again checks interrupted status of t1
 	}
+	
 }

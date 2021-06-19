@@ -27,7 +27,7 @@ class Test02 {
 	
 	void print() {
 		boolean isAvailable = lock.tryLock();	//lock.tryLock(100, TimeUnit.MILLISECONDS);
-		if(isAvailable) {
+		if (isAvailable) {
 			System.out.println("hello world");
 			lock.unlock();
 		}

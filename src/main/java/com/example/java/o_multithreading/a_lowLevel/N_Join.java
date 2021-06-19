@@ -5,13 +5,13 @@ public class N_Join {
 	
 	public static void main(String[] args) throws InterruptedException {
 		Thread t1 = new Thread(() -> {
-			for(int i=0; i<50; i++) {
+			for (int i=0; i<50; i++) {
 				System.out.println("[t1]:: "+i);
 			}
 		});
 		
 		Thread t2 = new Thread(() -> {
-			for(int i=50; i>0; i--) {
+			for (int i=50; i>0; i--) {
 				System.out.println("t2:: "+i);
 			}
 		});
@@ -23,5 +23,5 @@ public class N_Join {
 		t1.join();
 		System.out.println("Main:: last line");
 	}
+	
 }
-

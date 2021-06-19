@@ -5,7 +5,7 @@ package com.example.java.a_coreStructure;
  *						All types of init blocks
  *******************************************************************/
 class Test06 {
-	Test06(int x){ System.out.println("1-arg constructor"); }
+	Test06(int x) { System.out.println("1-arg constructor"); }
 	Test06() { System.out.println("no-arg constructor"); }
 	static { System.out.println("1st static init"); }
 	{ System.out.println("1st instance init"); }

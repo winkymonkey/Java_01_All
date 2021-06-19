@@ -20,14 +20,14 @@ class TryWithResources {
 			System.out.println(br.readLine());
 		}
 		finally {
-			if(null != br) {
+			if (null != br) {
 				br.close();
 			}
 		}
 	}
 	
 	private static void afterJava8() throws FileNotFoundException, IOException {
-		try(BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
+		try (BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
 			System.out.println(br.readLine());
 		}
 	}
@@ -40,7 +40,7 @@ class MultiCatch {
 		try {
 			//
 		}
-		catch(NullPointerException | ArithmeticException e) {
+		catch (NullPointerException | ArithmeticException e) {
 			//
 		}
 	}
@@ -53,7 +53,7 @@ class MultiCatch_EffectivelyFinalInstance {
 		try {
 			//
 		}
-		catch(NullPointerException | ArithmeticException e) {
+		catch (NullPointerException | ArithmeticException e) {
 			//e = new NullPointerException();
 		}
 	}
@@ -80,12 +80,12 @@ class CustomUnCheckedException extends RuntimeException {
 class PreciseRethrow {
 	void print(int a) throws NullPointerException {
 		try {
-			if(a<0)
+			if (a<0)
 				throw new NullPointerException();
 			else
 				throw new ArithmeticException();
 		}
-		catch(Exception e) {
+		catch (Exception e) {
 			throw e;
 		}
 	}

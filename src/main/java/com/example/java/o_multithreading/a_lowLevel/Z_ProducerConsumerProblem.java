@@ -21,7 +21,7 @@ public class Z_ProducerConsumerProblem {
 			try {
 				obj.wait();
 			}
-			catch(Exception e) {
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -35,9 +35,10 @@ public class Z_ProducerConsumerProblem {
 			try {
 				obj.wait();
 			}
-			catch(Exception e) {
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
+	
 }
