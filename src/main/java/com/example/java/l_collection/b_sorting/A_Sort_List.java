@@ -50,7 +50,7 @@ public class A_Sort_List {
 		list.add("Bob");
 		
 		// in reverse order
-		Collections.sort(list, Collections.reverseOrder());					// Cameron Bob Alice
+		Collections.sort(list, Comparator.reverseOrder());					// Cameron Bob Alice
 		print(list);
 	}
 	

@@ -18,26 +18,29 @@ public class C_PriorityBlockingQueue {
 	public static void main(String[] args) throws InterruptedException {
 		PriorityBlockingQueue<String> queue = new PriorityBlockingQueue<>();		// OR PriorityBlockingQueue<String> queue2 = new PriorityBlockingQueue<>(2);
 																					// OR PriorityBlockingQueue<String> queue3 = new PriorityBlockingQueue<>(2, Comparator.comparing(String::length));
-		Runnable consumer = ()->{
+		Runnable producer = ()->{
 			try {
-				System.out.println("retrieve from empty queue");
-				queue.take();
+				System.out.println("adding 1st element");
+				queue.put("elem-1");
 				
-				System.out.println("adding elements");
-				queue.add("msg-1");
-				queue.add("msg-2");
-				queue.add("msg-3");
+				System.out.println("adding 2nd element");
+				queue.put("elem-2");
 				
-				System.out.println("queue elements: "+queue);
+				System.out.println("adding 3rd element");
+				queue.put("elem-3");
+				
+				System.out.println("adding 4th element");
+				queue.put("elem-4");
 			}
-			catch (InterruptedException e) {
+			catch(Exception e) {
 				e.printStackTrace();
 			}
 		};
+		
 		ExecutorService executor = Executors.newFixedThreadPool(1);
-		executor.submit(consumer);
+		executor.submit(producer);
 		executor.awaitTermination(2000, TimeUnit.MILLISECONDS);
 		executor.shutdown();
 	}
-		
+	
 }

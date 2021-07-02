@@ -1,4 +1,4 @@
-package com.example.java.g_serializable.c_validateObject;
+package com.example.java.g_serialization.d_validateObject;
 
 import java.io.IOException;
 import java.io.InvalidObjectException;
@@ -26,6 +26,7 @@ public class Employee implements Serializable, ObjectInputValidation {
 		oos.defaultWriteObject();
 		oos.writeInt(age + 2);
 	}
+	
 	private void readObject(ObjectInputStream ois) throws IOException,ClassNotFoundException {
 		ois.registerValidation(this, 0);	//register validation
 		ois.defaultReadObject();

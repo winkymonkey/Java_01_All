@@ -1,4 +1,4 @@
-package com.example.java.g_serializable.c_validateObject;
+package com.example.java.g_serialization.b_readObject_writeObject;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 
-public class Test_Serializer {
+public class A_Serializer {
+	
 	private static final String filename = "employee.dat";
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -14,9 +15,6 @@ public class Test_Serializer {
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename));
 		out.writeObject(emp);
 		out.close();
-		
-		System.out.println(emp.age);				//20
-		System.out.println(emp.salary);				//100
-		System.out.println(Employee.experience);	//7
 	}
+	
 }

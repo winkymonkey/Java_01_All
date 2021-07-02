@@ -18,24 +18,27 @@ public class A_ArrayBlockingQueue {
 	public static void main(String[] args) throws InterruptedException {
 		ArrayBlockingQueue<String> queue = new ArrayBlockingQueue<>(2);
 		
-		Runnable consumer = ()->{
+		Runnable producer = ()->{
 			try {
-				System.out.println("retrieve from empty queue");
-				queue.take();
+				System.out.println("adding 1st element");
+				queue.put("elem-1");
 				
-				System.out.println("adding elements");
-				queue.add("msg-1");
-				queue.add("msg-2");
-				queue.add("msg-3");
+				System.out.println("adding 2nd element");
+				queue.put("elem-2");
 				
-				System.out.println("queue elements: "+queue);
+				System.out.println("adding 3rd element");
+				queue.put("elem-3");						// as the queue is already full, this thread gets blocked until a consumer consumes
+				
+				System.out.println("adding 4th element");
+				queue.put("elem-4");
 			}
-			catch (InterruptedException e) {
+			catch(Exception e) {
 				e.printStackTrace();
 			}
 		};
+		
 		ExecutorService executor = Executors.newFixedThreadPool(1);
-		executor.submit(consumer);
+		executor.submit(producer);
 		executor.awaitTermination(2000, TimeUnit.MILLISECONDS);
 		executor.shutdown();
 	}

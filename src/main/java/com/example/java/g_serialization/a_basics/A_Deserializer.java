@@ -1,4 +1,4 @@
-package com.example.java.g_serializable.b_readObjectWriteObject;
+package com.example.java.g_serialization.a_basics;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 
-public class Test_Deserializer {
+public class A_Deserializer {
+	
 	private static final String filename = "employee.dat";
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -14,8 +15,9 @@ public class Test_Deserializer {
 		Employee emp2 = (Employee)in.readObject();
 		in.close();
 		
-		System.out.println(emp2.age);				//16
-		System.out.println(emp2.salary);			//0
-		System.out.println(Employee.experience);	//0
+		System.out.println(emp2.age);				// 20
+		System.out.println(emp2.salary);			// 0
+		System.out.println(Employee.experience);	// 0
 	}
+	
 }

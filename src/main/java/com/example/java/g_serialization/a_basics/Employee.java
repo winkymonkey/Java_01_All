@@ -1,4 +1,4 @@
-package com.example.java.g_serializable.a_basics;
+package com.example.java.g_serialization.a_basics;
 
 import java.io.*;
 
@@ -15,4 +15,5 @@ public class Employee implements Serializable {
 		this.salary = salary;
 		Employee.experience = experience;
 	}
+	
 }
