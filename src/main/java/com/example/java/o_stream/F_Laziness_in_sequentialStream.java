@@ -22,12 +22,13 @@ public class F_Laziness_in_sequentialStream {
 			timeNow = timeNow + " - " + obj.toString();
 		}
 		System.out.println(timeNow);
+		
 		try {
 			Thread.sleep(1);
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
+
 }
-
-
