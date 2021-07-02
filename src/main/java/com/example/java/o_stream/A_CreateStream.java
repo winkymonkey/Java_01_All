@@ -9,11 +9,12 @@ import java.util.stream.Stream;
 
 @SuppressWarnings("unused")
 public class A_CreateStream {
+	
 	public static void main(String[] args) {
 		// Stream from collection
-		List<String> nameList = Arrays.asList("Reflection","Collection","Stream","Static","Static","Reflection","Final");
-		Stream<String> stream1 = nameList.stream();			//sequential stream
-		Stream<String> stream2 = nameList.parallelStream();	//parallel stream
+		List<String> list = Arrays.asList("Tom","Jack","Harry","Jack","Michel");
+		Stream<String> stream1 = list.stream();			//sequential stream
+		Stream<String> stream2 = list.parallelStream();	//parallel stream
 		
 		
 		// Stream from array
@@ -36,5 +37,5 @@ public class A_CreateStream {
 		//IntStream.range()
 		IntStream stream7 = IntStream.range(4, 10);
 	}
-}
 
+}

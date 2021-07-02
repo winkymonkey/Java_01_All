@@ -6,46 +6,20 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 
-@SuppressWarnings("unused")
 public class E_TerminalOps_others {
+	
 	public static void main(String[] args) {
 		/*-------------------------------------------------------------------------------------------------------------------*/
-		class Employee {
-			private int id;
-			private String name;
-			private String role;
-			private String location;
-			
-			Employee(int id, String name, String role, String location) {
-				this.id = id;
-				this.name = name;
-				this.role = role;
-				this.location = location;
-			}
-			
-			public int getId() {
-				return id;
-			}
-			public String getName() {
-				return name;
-			}
-			public String getRole() {
-				return role;
-			}
-			public String getLocation() {
-				return location;
-			}
-		}
 		List<String> strList = Arrays.asList("Reflection","Collection","Stream","Static","Static","Reflection","Final");
-		List<Employee> objList = Arrays.asList(new Employee(1, "Cameron", "Developer", "Germany"),
-												new Employee(4, "Bob", "Tester", "Australia"),
-												new Employee(3, "Daniel", "Support", "Japan"),
-												new Employee(5, "Emily", "Developer", "India"),
-												new Employee(2, "Alice", "Support", "Japan"),
-												new Employee(6, "George", "Developer", "India"));
+		List<Student> objList = Arrays.asList(new Student(1, "Cameron", "Developer", "Germany"),
+												new Student(4, "Bob", "Tester", "Australia"),
+												new Student(3, "Daniel", "Support", "Japan"),
+												new Student(5, "Emily", "Developer", "India"),
+												new Student(2, "Alice", "Support", "Japan"),
+												new Student(6, "George", "Developer", "India"));
 		
-		Stream<String> streamOfStr = strList.stream();
-		Stream<Employee> streamOfObj = objList.stream();
+		Stream<String> strStream = strList.stream();
+		Stream<Student> objStream = objList.stream();
 		/*-------------------------------------------------------------------------------------------------------------------*/
 		
 		
@@ -55,8 +29,8 @@ public class E_TerminalOps_others {
 		 * Using "forEach(Consumer)"
 		 * --------------------------
 		 */
-		streamOfStr.forEach(str -> System.out.println(str+","));
-		streamOfObj.forEach(obj -> System.out.println(obj.getName()));
+		strStream.forEach(str -> System.out.println(str+","));
+		objStream.forEach(obj -> System.out.println(obj.getName()));
 		
 		
 		/**
@@ -64,8 +38,8 @@ public class E_TerminalOps_others {
 		 * Using "anyMatch(Predicate)"
 		 * ----------------------------
 		 */
-		streamOfStr.anyMatch(str -> str.startsWith("S"));
-		streamOfObj.anyMatch(obj -> obj.getId()>4);
+		strStream.anyMatch(str -> str.startsWith("S"));
+		objStream.anyMatch(obj -> obj.getId()>4);
 		
 		
 		/**
@@ -73,14 +47,14 @@ public class E_TerminalOps_others {
 		 * Using "findFirst()"
 		 * -------------------
 		 */
-		Optional<String> optn1 = streamOfStr.findFirst();
+		Optional<String> optn1 = strStream.findFirst();
 		optn1.ifPresent(str -> System.out.println(str));
 		optn1.orElse("BLANK STRING");
 		
-		Optional<Employee> optn2 = streamOfObj.findFirst();
+		Optional<Student> optn2 = objStream.findFirst();
 		optn2.ifPresent(obj -> System.out.println(obj));
-		optn2.orElse(new Employee(0, "XX", "NoRole", "Any"));
+		optn2.orElse(new Student(0, "XX", "NoRole", "Any"));
+	
 	}
+
 }
-
-
