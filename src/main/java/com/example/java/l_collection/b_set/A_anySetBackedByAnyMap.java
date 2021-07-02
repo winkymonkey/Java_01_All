@@ -1,4 +1,4 @@
-package com.example.java.l_collection.g_set;
+package com.example.java.l_collection.b_set;
 
 import java.util.Collections;
 import java.util.Map;

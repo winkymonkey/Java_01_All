@@ -1,4 +1,4 @@
-package com.example.java.l_collection.b_sorting;
+package com.example.java.l_collection.g_sorting;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,15 +17,13 @@ public class B_Sort_Map {
 		sortMapKey_Strings_naturalOrder();
 		sortMapKey_Strings_customOrder();
 		
-		sortMapValues_Strings_naturalOrder();
-		sortMapValues_Strings_customOrder();
-		
 		sortMapKey_Objects_legacyStyle();
 		sortMapKey_Objects_Java8style();
 	}
 	
 	
 	
+	/* **************************************************************************************************************** */
 	private static void sortMapKey_Strings_naturalOrder() {
 		Map<String, String> map = new HashMap<>();
 		map.put("Cameron", "pqrst");
@@ -34,7 +32,7 @@ public class B_Sort_Map {
 		
 		// in natural order of "key"
 		List<Entry<String, String>> entryList = new ArrayList<>(map.entrySet());
-		Collections.sort(entryList, (entry1, entry2)->(entry1.getKey().compareTo(entry2.getKey())) );
+		Collections.sort(entryList, (entry1, entry2)->(entry1.getKey().compareTo(entry2.getKey())) );			// to compare values use "entry.getValue()"
 		print(entryList);
 	}
 	
@@ -46,38 +44,13 @@ public class B_Sort_Map {
 		
 		// in custom order of "key"
 		List<Entry<String, String>> entryList = new ArrayList<>(map.entrySet());
-		Collections.sort(entryList, (entry1, entry2)->(entry1.getKey().length()-entry2.getKey().length()) );
+		Collections.sort(entryList, (entry1, entry2)->(entry1.getKey().length()-entry2.getKey().length()) );	// to compare values use "entry.getValue()"
 		print(entryList);
 	}
 	
 	
 	
-	private static void sortMapValues_Strings_naturalOrder() {
-		Map<String, String> map = new HashMap<>();
-		map.put("Cameron", "pqrst");
-		map.put("Bob", "abc");
-		map.put("Alice", "wxyz");
-		
-		// in natural order of "value"
-		List<Entry<String, String>> entryList = new ArrayList<>(map.entrySet());
-		Collections.sort(entryList, (entry1,entry2)->entry1.getValue().compareTo(entry2.getValue()) );
-		print(entryList);
-	}
-	
-	private static void sortMapValues_Strings_customOrder() {
-		Map<String, String> map = new HashMap<>();
-		map.put("Cameron", "pqrst");
-		map.put("Bob", "abc");
-		map.put("Alice", "wxyz");
-		
-		// in custom order of "value"
-		List<Entry<String, String>> entryList = new ArrayList<>(map.entrySet());
-		Collections.sort(entryList, (entry1,entry2)->entry1.getValue().length()-entry2.getValue().length() );
-		print(entryList);
-	}
-	
-	
-	
+	/* **************************************************************************************************************** */
 	private static void sortMapKey_Objects_legacyStyle() {
 		Map<StudentA, String> map = new HashMap<>();
 		map.put(new StudentA("Bob", 66), "vvvv");

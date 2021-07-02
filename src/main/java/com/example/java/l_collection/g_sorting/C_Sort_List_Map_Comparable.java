@@ -1,4 +1,4 @@
-package com.example.java.l_collection.b_sorting;
+package com.example.java.l_collection.g_sorting;
 
 import java.util.ArrayList;
 import java.util.Collections;

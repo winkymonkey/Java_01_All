@@ -1,4 +1,4 @@
-package com.example.java.l_collection.b_sorting;
+package com.example.java.l_collection.g_sorting;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +21,7 @@ public class A_Sort_List {
 	
 	
 	
+	/* **************************************************************************************************************** */
 	private static void sortListOf_Strings_naturalOrder() {
 		List<String> list = new ArrayList<>();
 		list.add("Alice");
@@ -50,12 +51,13 @@ public class A_Sort_List {
 		list.add("Bob");
 		
 		// in reverse order
-		Collections.sort(list, Comparator.reverseOrder());					// Cameron Bob Alice
+		Collections.sort(list, Comparator.reverseOrder() );					// Cameron Bob Alice
 		print(list);
 	}
 	
 	
 	
+	/* **************************************************************************************************************** */
 	private static void sortListOf_Objects_legacyStyle() {
 		List<StudentA> list = new ArrayList<>();
 		list.add(new StudentA("Alice", 66));
@@ -78,11 +80,11 @@ public class A_Sort_List {
 		list.add(new StudentA("Bob", 33));
 		
 		// in natural order of "name"
-		Collections.sort(list, Comparator.comparing(StudentA::getName));
+		Collections.sort(list, Comparator.comparing(StudentA::getName) );
 		print(list);
 		
 		// in natural order of "name". If conflict, then in natural order of "age"
-		Collections.sort(list, Comparator.comparing(StudentA::getName).thenComparing(StudentA::getAge));
+		Collections.sort(list, Comparator.comparing(StudentA::getName).thenComparing(StudentA::getAge) );
 		print(list);
 		
 		// in custom order of "name"
