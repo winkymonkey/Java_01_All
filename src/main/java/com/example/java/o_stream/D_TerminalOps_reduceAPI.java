@@ -3,7 +3,6 @@ package com.example.java.o_stream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 
 public class D_TerminalOps_reduceAPI {
@@ -17,31 +16,22 @@ public class D_TerminalOps_reduceAPI {
 												new Student(5, "Emily", "Developer", "India"),
 												new Student(2, "Alice", "Support", "Japan"),
 												new Student(6, "George", "Developer", "India"));
-		
-		Stream<String> strStream = strList.stream();
-		Stream<Student> objStream = objList.stream();
 		/*--------------------------------------------------------------------------------------------------*/
 		
 		
 		
 		/**
-		 * ------------------------------------------------------------
-		 * Using "reduce(BinaryOperator)" -- with collection of String
-		 * ------------------------------------------------------------
+		 * --------------------------------
+		 * Using "reduce(BinaryOperator)"
+		 * --------------------------------
 		 */
-		Optional<String> optn1 = strStream.reduce((str1,str2) -> str1+","+str2);
-		optn1.ifPresent(str -> System.out.println(str));
-		optn1.orElse("BLANK STRING");
+		Optional<String> optl1 = strList.stream().reduce( (str1,str2) -> str1+"-"+str2 );
+		optl1.ifPresent( str -> System.out.println(str) );
+		optl1.orElse( "BLANK STRING" );
 		
-		
-		/**
-		 * ------------------------------------------------------------
-		 * Using "reduce(BinaryOperator)" -- with collection of Object
-		 * ------------------------------------------------------------
-		 */
-		Optional<Student> optn2 = objStream.reduce((stu1,stu2) -> stu1.getId()>stu2.getId() ? stu1:stu2);
-		optn2.ifPresent(stu -> System.out.println(stu.getName()));
-		optn2.orElse(new Student(0, "XX", "NoRole", "Any"));
+		Optional<Student> optl2 = objList.stream().reduce( (st1,st2) -> st1.getId()>st2.getId() ? st1:st2 );
+		optl2.ifPresent( st -> System.out.println(st.getName()) );
+		optl2.orElse( new Student(0, "XX", "NoRole", "Any") );
 	
 	}	
 

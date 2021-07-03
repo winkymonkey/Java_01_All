@@ -20,9 +20,6 @@ public class B_IntermediateOps {
 												new Student(5, "Emily", "Developer", "India"),
 												new Student(2, "Alice", "Support", "Japan"),
 												new Student(6, "George", "Developer", "India"));
-		
-		Stream<String> strStream = strList.stream();
-		Stream<Student> objStream = objList.stream();		
 		/*--------------------------------------------------------------------------------------------------*/
 		
 		
@@ -32,8 +29,8 @@ public class B_IntermediateOps {
 		 * Using "map(Function)"
 		 * ---------------------------
 		 */
-		Stream<Integer> stream1 = strStream.map(str->str.length() );
-		Stream<String> stream2 = objStream.map(stu->stu.getName() );
+		Stream<Integer> stream1 = strList.stream().map(str->str.length() );
+		Stream<String> stream2 = objList.stream().map(stu->stu.getName() );
 		
 		
 		/**
@@ -41,8 +38,8 @@ public class B_IntermediateOps {
 		 * Using "filter(Predicate)"
 		 * ---------------------------
 		 */
-		Stream<String> stream3 = strStream.filter(str->str.startsWith("S") );
-		Stream<Student> stream4 = objStream.filter(stu->stu.getRole().startsWith("D") );
+		Stream<String> stream3 = strList.stream().filter(str->str.startsWith("S") );
+		Stream<Student> stream4 = objList.stream().filter(stu->stu.getRole().startsWith("D") );
 		
 		
 		/**
@@ -50,9 +47,8 @@ public class B_IntermediateOps {
 		 * Using "sorted(Comparator)"
 		 * ---------------------------
 		 */
-		Stream<String> stream5 = strStream.sorted();
-		Stream<Student> stream6 = objStream.sorted(Comparator.comparing(Student::getId) );
-		Stream<Student> stream7 = objStream.sorted(Comparator.comparing(Student::getId).thenComparing(Student::getName) );
+		Stream<String> stream5 = strList.stream().sorted();
+		Stream<Student> stream6 = objList.stream().sorted(Comparator.comparing(Student::getId) );
 		
 		
 		/**
@@ -60,8 +56,8 @@ public class B_IntermediateOps {
 		 * Using "distinct()"
 		 * ----------------------
 		 */
-		Stream<String> stream8 = strStream.distinct();
-		Stream<Student> stream9 = objStream.distinct();		//(not possible to decide distinct as per property)
+		Stream<String> stream7 = strList.stream().distinct();
+		Stream<Student> stream8 = objList.stream().distinct();		// (not possible to decide distinct as per property)
 		
 		
 		/**
@@ -69,8 +65,8 @@ public class B_IntermediateOps {
 		 * Using "limit(long)"
 		 * ----------------------
 		 */
-		Stream<String> stream10 = strStream.limit(5);
-		Stream<Student> stream11 = objStream.limit(3);
+		Stream<String> stream9 = strList.stream().limit(5);
+		Stream<Student> stream10 = objList.stream().limit(3);
 		
 		
 		/**
@@ -81,8 +77,7 @@ public class B_IntermediateOps {
 		List<String> list1 = Arrays.asList("CC","GG","AA","PP");
 		List<String> list2 = Arrays.asList("XX","MM","BB");
 		List<String> list3 = Arrays.asList("CC","AA","FF","YY");
-		Stream<List<String>> listStream = Stream.of(list1, list2, list3);
-		Stream<String> stream12 = listStream.flatMap(eachList -> eachList.stream());
+		Stream<String> stream12 = Stream.of(list1, list2, list3).flatMap( eachList -> eachList.stream() );
 		
 		
 		/**
@@ -90,25 +85,24 @@ public class B_IntermediateOps {
 		 * Using "flatMap(Function)" -- with collection of Objects
 		 * --------------------------------------------------------
 		 */
-		class OrderLineItem {
+		class OrderItem {
 			private String itemName;
-			public OrderLineItem(String itemName) {
+			public OrderItem(String itemName) {
 				this.itemName = itemName;
 			}
 		}
 		class Order {
 			private Integer oid;
-			private List<OrderLineItem> lineItemList;
-			public Order(Integer oid, List<OrderLineItem> lineItemList) {
+			private List<OrderItem> itemList;
+			public Order(Integer oid, List<OrderItem> itemList) {
 				this.oid = oid;
-				this.lineItemList = lineItemList;
+				this.itemList = itemList;
 			}
 		}
-		Order o1 = new Order(123, Arrays.asList(new OrderLineItem("AAA"), new OrderLineItem("BBB"), new OrderLineItem("CCC")));
-		Order o2 = new Order(456, Arrays.asList(new OrderLineItem("AAA"), new OrderLineItem("BBB")));
-		Order o3 = new Order(789, Arrays.asList(new OrderLineItem("AAA"), new OrderLineItem("XXX"), new OrderLineItem("PPP")));
-		List<Order> orderList = Arrays.asList(o1,o2,o3);
-		Stream<OrderLineItem> stream13 = orderList.stream().flatMap(order -> order.lineItemList.stream());
+		Order o1 = new Order(123, Arrays.asList(new OrderItem("AAA"), new OrderItem("BBB"), new OrderItem("CCC")));
+		Order o2 = new Order(456, Arrays.asList(new OrderItem("AAA"), new OrderItem("BBB")));
+		Order o3 = new Order(789, Arrays.asList(new OrderItem("AAA"), new OrderItem("XXX"), new OrderItem("PPP")));
+		Stream<OrderItem> stream13 = Stream.of(o1,o2,o3).flatMap( order -> order.itemList.stream() );
 	
 	}
 		
