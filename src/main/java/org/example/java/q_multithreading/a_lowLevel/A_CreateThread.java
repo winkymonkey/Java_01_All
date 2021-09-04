@@ -25,4 +25,5 @@ public class A_CreateThread {
 		Thread t3 = new Thread(() -> {/*... code to be executed by this thread ...*/} );
 		t3.start();
 	}
+	
 }

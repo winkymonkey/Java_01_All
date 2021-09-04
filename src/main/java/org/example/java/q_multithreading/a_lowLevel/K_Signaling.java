@@ -1,17 +1,21 @@
 package org.example.java.q_multithreading.a_lowLevel;
 
 
-/************************************************/
-/** 			Basic Wait Notify				*/
-/************************************************/
 class MonitorObject {
 	//
 }
 
-class Test13 {
-	MonitorObject monitorObj = new MonitorObject();
 
-	public void doWait() {					//called by the waiting thread
+/**
+ * --------------------------------------------
+ * Basic Wait Notify
+ * --------------------------------------------
+ */
+class Test13 {
+	
+	private MonitorObject monitorObj = new MonitorObject();
+
+	public void doWait() {					// called by the waiting thread
 		synchronized (monitorObj) {
 			try {
 				monitorObj.wait();
@@ -22,26 +26,30 @@ class Test13 {
 		}
 	}
 
-	public void doNotify() {				//called by the notifying thread
+	public void doNotify() {				// called by the notifying thread
 		synchronized (monitorObj) {
 			monitorObj.notify();
 		}
 	}
+	
 }
 
 
 
 
-/********************************************************/
-/** 			Solve Missed Signal Issue				*/
-/********************************************************/
+/**
+ * --------------------------------------------
+ * Solve Missed Signal Issue
+ * --------------------------------------------
+ */
 class Test14 {
-	MonitorObject monitorObj = new MonitorObject();
-	boolean wasSignalled = false;
+	
+	private MonitorObject monitorObj = new MonitorObject();
+	private boolean wasSignalled = false;
 
-	public void doWait() {					//called by the waiting thread
+	public void doWait() {					// called by the waiting thread
 		synchronized (monitorObj) {
-			if (!wasSignalled) {			//if notifying signal is not already triggered
+			if (!wasSignalled) {			// if notifying signal is not already triggered
 				try {
 					monitorObj.wait();
 				}
@@ -49,31 +57,35 @@ class Test14 {
 					e.printStackTrace();
 				}
 			}
-			wasSignalled = false;			//clear signal and continue running.
+			wasSignalled = false;			// clear signal and continue running.
 		}
 	}
 
-	public void doNotify() {				//called by the notifying thread
+	public void doNotify() {				// called by the notifying thread
 		synchronized (monitorObj) {
 			wasSignalled = true;
 			monitorObj.notify();
 		}
 	}
+	
 }
 
 
 
 
-/********************************************************/
-/** 			Solve Spurious Wake up Issue			*/
-/********************************************************/
+/**
+ * --------------------------------------------
+ * Solve Spurious Wake up Issue
+ * --------------------------------------------
+ */
 class Test15 {
-	MonitorObject monitorObj = new MonitorObject();
-	boolean wasSignalled = false;
+	
+	private MonitorObject monitorObj = new MonitorObject();
+	private boolean wasSignalled = false;
 
 	public void doWait() {
 		synchronized (monitorObj) {
-			while (!wasSignalled) {			//if notifying signal is not already triggered
+			while (!wasSignalled) {			// until notifying signal is not already triggered
 				try {
 					monitorObj.wait();
 				}
@@ -81,7 +93,7 @@ class Test15 {
 					e.printStackTrace();
 				}
 			}
-			wasSignalled = false;			//clear signal and continue running.
+			wasSignalled = false;			// clear signal and continue running.
 		}
 	}
 
@@ -91,5 +103,5 @@ class Test15 {
 			monitorObj.notify();
 		}
 	}
+	
 }
-

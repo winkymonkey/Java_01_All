@@ -2,6 +2,7 @@ package org.example.java.q_multithreading.a_lowLevel;
 
 
 public class H_ThreadSafety_Volatile {
+	
 	private int years;
 	private int months;
 	private volatile int days;
@@ -18,5 +19,5 @@ public class H_ThreadSafety_Volatile {
 		this.months = months;
 		this.days = days;			//writing to a volatile variable should be at end
 	}
-}
 
+}

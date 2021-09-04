@@ -30,5 +30,5 @@ public class J2_ThreadSafety_InheritableThreadLocal {
 		t1.start();
 		t2.start();
 	}
+	
 }
-

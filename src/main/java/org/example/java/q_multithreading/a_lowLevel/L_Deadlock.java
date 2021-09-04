@@ -17,7 +17,8 @@ class Shared {
 	}
 }
 
-class Test17 {
+
+class Test17 {	
 	public static void main(String[] args) {
 		Shared s1 = new Shared();
 		Shared s2 = new Shared();
@@ -63,5 +64,3 @@ class Test18 {
 		t2.start();
 	}
 }
-
-

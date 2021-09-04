@@ -1,7 +1,8 @@
 package org.example.java.q_multithreading.a_lowLevel;
 
 
-public class Z_ProducerConsumerProblem {
+public class Z2_ProducerConsumerProblem {
+	
 	private static String str = "";
 	private static final Object obj = new Object();
 	

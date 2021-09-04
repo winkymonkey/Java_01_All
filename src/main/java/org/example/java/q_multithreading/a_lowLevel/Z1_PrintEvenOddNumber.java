@@ -1,9 +1,11 @@
 package org.example.java.q_multithreading.a_lowLevel;
 
 
-public class Z_PrintEvenOddNumber {
+public class Z1_PrintEvenOddNumber {
+	
 	private static final Object obj = new Object();
 	private static final int MAX = 1000;
+	
 	
 	public static void main(String[] args) {
 		Thread t1 = new Thread(() -> printEven(1), "t1");
@@ -13,13 +15,21 @@ public class Z_PrintEvenOddNumber {
 		t2.start();
 	}
 	
+	
 	private static void printOdd(int n) {
+		String name = Thread.currentThread().getName();
 		synchronized(obj) {
 			while (n < MAX) {
-				System.out.println(Thread.currentThread().getName() + "--" +n);
+				System.out.println(name + " printing --- " +n);
+				
+				System.out.println(name + " incrementing");
 				n+=2;
+				
+				System.out.println(name + " calling notify");
 				obj.notify();
+				
 				try {
+					System.out.println(name + " calling wait");
 					obj.wait();
 				}
 				catch (InterruptedException e) {
@@ -29,13 +39,21 @@ public class Z_PrintEvenOddNumber {
 		}
 	}
 	
+	
 	private static void printEven(int n) {
+		String name = Thread.currentThread().getName();
 		synchronized(obj) {
 			while (n < MAX) {
-				System.out.println(Thread.currentThread().getName() + "--" +n);
+				System.out.println(name + " printing --- " +n);
+				
+				System.out.println(name + " incrementing");
 				n+=2;
+				
+				System.out.println(name + " calling notify");
 				obj.notify();
+				
 				try {
+					System.out.println(name + " calling wait");
 					obj.wait();
 				}
 				catch (InterruptedException e) {
@@ -44,6 +62,5 @@ public class Z_PrintEvenOddNumber {
 			}
 		}
 	}
+	
 }
-
-

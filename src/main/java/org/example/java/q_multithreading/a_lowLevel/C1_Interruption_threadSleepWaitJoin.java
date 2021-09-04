@@ -23,4 +23,5 @@ class C1_Interruption_threadSleepWaitJoin {
 		Thread.sleep(1000);								//main thread wait for 1s
 		System.out.println(t1.isInterrupted());	//false	//main thread again checks interrupted status of t1
 	}
+	
 }

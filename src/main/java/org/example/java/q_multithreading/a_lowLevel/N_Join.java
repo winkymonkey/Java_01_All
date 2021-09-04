@@ -1,17 +1,53 @@
 package org.example.java.q_multithreading.a_lowLevel;
 
 
-public class N_Join {
+/**
+ * -----------------------------------------
+ * Problem Without Join
+ * -----------------------------------------
+ */
+class ProblemWithoutJoin {
 	
 	public static void main(String[] args) throws InterruptedException {
 		Thread t1 = new Thread(() -> {
-			for (int i=0; i<50; i++) {
+			for (int i=0; i<5; i++) {
 				System.out.println("[t1]:: "+i);
 			}
 		});
 		
 		Thread t2 = new Thread(() -> {
-			for (int i=50; i>0; i--) {
+			for (int i=5; i>0; i--) {
+				System.out.println("t2:: "+i);
+			}
+		});
+		
+		t1.start();
+		t2.start();
+		
+		System.out.println("Main:: last line");
+	}
+	
+}
+
+
+
+
+/**
+ * -----------------------------------------
+ * Solution Using Join
+ * -----------------------------------------
+ */
+class SolutionUsingJoin {
+	
+	public static void main(String[] args) throws InterruptedException {
+		Thread t1 = new Thread(() -> {
+			for (int i=0; i<5; i++) {
+				System.out.println("[t1]:: "+i);
+			}
+		});
+		
+		Thread t2 = new Thread(() -> {
+			for (int i=5; i>0; i--) {
 				System.out.println("t2:: "+i);
 			}
 		});

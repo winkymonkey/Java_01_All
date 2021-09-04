@@ -31,5 +31,5 @@ public class J1_ThreadSafety_Threadlocal {
 		t1.start();
 		t2.start();
 	}
+	
 }
-

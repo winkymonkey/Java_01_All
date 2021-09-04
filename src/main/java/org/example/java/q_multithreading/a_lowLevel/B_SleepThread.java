@@ -3,7 +3,8 @@ package org.example.java.q_multithreading.a_lowLevel;
 import java.util.concurrent.TimeUnit;
 
 
-class Test4 {
+public class B_SleepThread {
+	
 	public static void main(String[] args) {
 		try {
 			Thread.sleep(2000);					//Main thread will sleep
@@ -26,4 +27,5 @@ class Test4 {
 		});
 		t1.start();
 	}
+	
 }
