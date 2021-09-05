@@ -5,21 +5,21 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 
-public class N_HowToShutdownExecutor {
+public class J_HowToShutdownExecutor {
 	
 	public static void main(String[] args) {
-		ExecutorService executorService = Executors.newFixedThreadPool(5);
+		ExecutorService pool = Executors.newFixedThreadPool(5);
 		// some processing
 
-		executorService.shutdown();
+		pool.shutdown();
 		try {
-			if (!executorService.awaitTermination(60, TimeUnit.SECONDS)) {
-				executorService.shutdownNow();
+			if (!pool.awaitTermination(60, TimeUnit.SECONDS)) {
+				pool.shutdownNow();
 			}
 		}
 		catch (InterruptedException e) {
 			e.printStackTrace();
-			executorService.shutdownNow();
+			pool.shutdownNow();
 		}
 	}
 	

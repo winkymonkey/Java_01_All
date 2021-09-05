@@ -10,13 +10,33 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 
 /**
- * This class demonstrates how to use ReadWriteLock to add concurrency
- * features to a non-thread-safe collection
- * @param <E>
+ * ----------------------------------------------------------------------------------------------------------------
+ * This class demonstrates how to use ReadWriteLock to add concurrency features to a non-thread-safe collection
+ * ----------------------------------------------------------------------------------------------------------------
  */
+public class B_useReentrantReadWriteLock {
+	static final int READER_SIZE = 5000;
+	static final int WRITER_SIZE = 50;
+
+	public static void main(String[] args) {
+		Integer[] initialElements = { 33, 28, 86, 99, 38, 22, 76, 19, 50 };
+
+		ReadWriteList<Integer> readWriteList = new ReadWriteList<>(initialElements);
+
+		for (int i = 0; i < WRITER_SIZE; i++) {
+			new Writer(readWriteList).start();
+		}
+
+		for (int i = 0; i < READER_SIZE; i++) {
+			new Reader(readWriteList).start();
+		}
+	}
+}
+
+
 class ReadWriteList<E> {
 	private List<E> list = new ArrayList<>();
-    private ReadWriteLock rwLock = new ReentrantReadWriteLock();
+    private ReadWriteLock lock = new ReentrantReadWriteLock();
  
     @SafeVarargs
 	public ReadWriteList(E... initialElements) {
@@ -24,7 +44,7 @@ class ReadWriteList<E> {
     }
 	
 	public void add(E element) {
-        Lock writeLock = rwLock.writeLock();
+        Lock writeLock = lock.writeLock();
         writeLock.lock();
         try {
             list.add(element);
@@ -35,7 +55,7 @@ class ReadWriteList<E> {
     }
  
     public E get(int index) {
-        Lock readLock = rwLock.readLock();
+        Lock readLock = lock.readLock();
         readLock.lock();
         try {
             return list.get(index);
@@ -46,7 +66,7 @@ class ReadWriteList<E> {
     }
  
     public int size() {
-        Lock readLock = rwLock.readLock();
+        Lock readLock = lock.readLock();
         readLock.lock();
         try {
             return list.size();
@@ -74,7 +94,7 @@ class Writer extends Thread {
 		readWriteList.add(number);
 		try {
 			Thread.sleep(100);
-			System.out.println(getName() + " -> [put]: " + number);
+			System.out.println(getName() + " -> [write]: " + number);
 		}
 		catch (InterruptedException ie) {
 			ie.printStackTrace();
@@ -97,7 +117,7 @@ class Reader extends Thread {
 	public void run() {
 		int index = new Random().nextInt(readWriteList.size());
 		Integer number = readWriteList.get(index);
-		System.out.println(getName() + " -> get: " + number);
+		System.out.println(getName() + " -> [read]: " + number);
 		try {
 			Thread.sleep(100);
 		}
@@ -105,28 +125,4 @@ class Reader extends Thread {
 			ie.printStackTrace();
 		}
     }
-}
-
-
-
-/**
- * Test program for understanding ReadWriteLock
- */
-public class B_ReentrantReadWriteLock {
-	static final int READER_SIZE = 5000;
-	static final int WRITER_SIZE = 50;
-
-	public static void main(String[] args) {
-		Integer[] initialElements = { 33, 28, 86, 99, 38, 22, 76, 19, 50 };
-
-		ReadWriteList<Integer> readWriteList = new ReadWriteList<Integer>(initialElements);
-
-		for (int i = 0; i < WRITER_SIZE; i++) {
-			new Writer(readWriteList).start();
-		}
-
-		for (int i = 0; i < READER_SIZE; i++) {
-			new Reader(readWriteList).start();
-		}
-	}
 }

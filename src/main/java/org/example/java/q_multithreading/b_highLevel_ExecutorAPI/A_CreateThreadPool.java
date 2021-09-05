@@ -2,22 +2,18 @@ package org.example.java.q_multithreading.b_highLevel_ExecutorAPI;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 
-/************************************************************/
-/**				Obtain ExecutorService Instance				*/
-/************************************************************/
 public class A_CreateThreadPool {
 	
 	public static void main(String[] args) {
-		ExecutorService pool1 = Executors.newSingleThreadExecutor();	//thread-pool (Single thread)
-		ExecutorService pool2 = Executors.newCachedThreadPool();		//thread-pool (Cached)
-		ExecutorService pool3 = Executors.newFixedThreadPool(5); 		//thread-pool (Fixed N threads)
-
-		ExecutorService pool4 = Executors.newWorkStealingPool(); 		//WorkStealing Pool (use ForkJoinPool)
-		
-		ExecutorService pool5 = Executors.newSingleThreadScheduledExecutor(); 	//Scheduled thread-pool (Single thread)
-		ExecutorService pool6 = Executors.newScheduledThreadPool(5); 			//Scheduled thread-pool (Fixed N threads)
+		ExecutorService pool1 = Executors.newSingleThreadExecutor();
+		ExecutorService pool2 = Executors.newCachedThreadPool();
+		ExecutorService pool3 = Executors.newFixedThreadPool(5);
+		ScheduledExecutorService pool4 = Executors.newSingleThreadScheduledExecutor();
+		ScheduledExecutorService pool5 = Executors.newScheduledThreadPool(5);
+		ExecutorService pool6 = Executors.newWorkStealingPool();
 		
 		pool1.shutdown();
 		pool2.shutdown();
@@ -26,4 +22,5 @@ public class A_CreateThreadPool {
 		pool5.shutdown();
 		pool6.shutdown();
 	}
+	
 }

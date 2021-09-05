@@ -3,9 +3,16 @@ package org.example.java.q_multithreading.c_highLevel_LockAPI;
 import java.util.concurrent.locks.StampedLock;
 
 
-public class C_StampedLock {
+public class C_useStampedLock {
 	
-	public void demoReadLock() {
+	public static void main(String[] args) {
+		demoReadLock();
+		demoWriteLock();
+		demoOptimisticRead();
+	}
+	
+	
+	private static void demoReadLock() {
 		StampedLock lock = new StampedLock();
 		long stamp = lock.readLock();
 		try {
@@ -16,7 +23,7 @@ public class C_StampedLock {
 		}
 	}
 	
-	public void demoWriteLock() {
+	private static void demoWriteLock() {
 		StampedLock lock = new StampedLock();
 		long stamp = lock.writeLock();
 		try {
@@ -27,7 +34,7 @@ public class C_StampedLock {
 		}
 	}
 	
-	public void demoOptimisticRead() {
+	private static void demoOptimisticRead() {
 		StampedLock lock = new StampedLock();
 		long stamp = lock.tryOptimisticRead();
 		//...read
