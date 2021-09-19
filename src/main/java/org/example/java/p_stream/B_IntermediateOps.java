@@ -77,33 +77,28 @@ public class B_IntermediateOps {
 		List<String> list1 = Arrays.asList("CC","GG","AA","PP");
 		List<String> list2 = Arrays.asList("XX","MM","BB");
 		List<String> list3 = Arrays.asList("CC","AA","FF","YY");
-		Stream<String> stream12 = Stream.of(list1, list2, list3).flatMap( eachList -> eachList.stream() );
+		Stream<String> stream11 = Stream.of(list1, list2, list3).flatMap( eachList -> eachList.stream() );
 		
-		
-		/**
-		 * --------------------------------------------------------
-		 * Using "flatMap(Function)" -- with collection of Objects
-		 * --------------------------------------------------------
-		 */
-		class OrderItem {
-			private String itemName;
-			public OrderItem(String itemName) {
-				this.itemName = itemName;
-			}
-		}
-		class Order {
-			private Integer oid;
-			private List<OrderItem> itemList;
-			public Order(Integer oid, List<OrderItem> itemList) {
-				this.oid = oid;
-				this.itemList = itemList;
-			}
-		}
 		Order o1 = new Order(123, Arrays.asList(new OrderItem("AAA"), new OrderItem("BBB"), new OrderItem("CCC")));
 		Order o2 = new Order(456, Arrays.asList(new OrderItem("AAA"), new OrderItem("BBB")));
 		Order o3 = new Order(789, Arrays.asList(new OrderItem("AAA"), new OrderItem("XXX"), new OrderItem("PPP")));
-		Stream<OrderItem> stream13 = Stream.of(o1,o2,o3).flatMap( order -> order.itemList.stream() );
-	
+		Stream<OrderItem> stream12 = Stream.of(o1,o2,o3).flatMap( order -> order.itemList.stream() );
 	}
-		
+	
+	
+	private static class Order {
+		private Integer oid;
+		private List<OrderItem> itemList;
+		public Order(Integer oid, List<OrderItem> itemList) {
+			this.oid = oid;
+			this.itemList = itemList;
+		}
+	}
+	private static class OrderItem {
+		private String itemName;
+		public OrderItem(String itemName) {
+			this.itemName = itemName;
+		}
+	}
+	
 }

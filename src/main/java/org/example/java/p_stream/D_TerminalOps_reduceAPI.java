@@ -25,13 +25,13 @@ public class D_TerminalOps_reduceAPI {
 		 * Using "reduce(BinaryOperator)"
 		 * --------------------------------
 		 */
-		Optional<String> optl1 = strList.stream().reduce( (str1,str2) -> str1+"-"+str2 );
-		optl1.ifPresent( str -> System.out.println(str) );
-		optl1.orElse( "BLANK STRING" );
+		Optional<String> opt1 = strList.stream().reduce( (str1,str2) -> str1+"-"+str2 );
+		opt1.ifPresent( str -> System.out.println(str) );
+		opt1.orElse( "BLANK STRING" );
 		
-		Optional<Student> optl2 = objList.stream().reduce( (st1,st2) -> st1.getId()>st2.getId() ? st1:st2 );
-		optl2.ifPresent( st -> System.out.println(st.getName()) );
-		optl2.orElse( new Student(0, "XX", "NoRole", "Any") );
+		Optional<Student> opt2 = objList.stream().reduce( (st1,st2) -> st1.getId()>st2.getId() ? st1:st2 );
+		opt2.ifPresent( st -> System.out.println(st.getName()) );
+		opt2.orElse( new Student(0, "XX", "NoRole", "Any") );
 	
 	}	
 
